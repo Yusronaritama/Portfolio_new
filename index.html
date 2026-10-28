@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusronaritama | Web & Software Developer</title>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Devicon CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0B0F17',
+                        darkcharcoal: '#121824',
+                        cardbg: '#172030',
+                        cardheader: '#222E42',
+                        silver: {
+                            DEFAULT: '#94A3B8',
+                            light: '#CBD5E1',
+                            lighter: '#E2E8F0',
+                            dark: '#64748B',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar in graphite & charcoal */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748B;
+        }
+
+        /* Subtle warm grid pattern (dot matrix) */
+        .bg-pattern-subtle {
+            background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
+        }
+
+        /* Tech Blueprint Grid Pattern: High contrast dual-tier grid */
+        .bg-grid-blueprint {
+            background-size: 40px 40px, 40px 40px, 160px 160px, 160px 160px;
+            background-image: 
+                linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+                linear-gradient(to right, rgba(203, 213, 225, 0.22) 1.5px, transparent 1.5px),
+                linear-gradient(to bottom, rgba(203, 213, 225, 0.22) 1.5px, transparent 1.5px);
+        }
+
+        /* Tech Cross / Crosshair Grid Pattern: Bold & high definition */
+        .bg-grid-cross {
+            background-size: 32px 32px;
+            background-image: 
+                radial-gradient(rgba(203, 213, 225, 0.28) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(148, 163, 184, 0.18) 1.5px, transparent 1.5px);
+            background-position: 0 0, 16px 16px;
+        }
+
+        /* Tech Dot Matrix Pattern: Crisp and distinct */
+        .bg-dot-matrix {
+            background-image: radial-gradient(rgba(203, 213, 225, 0.25) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        /* Masking utilities: let much more visibility through */
+        .mask-radial-fade {
+            mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, black 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, black 50%, transparent 100%);
+        }
+
+        .mask-fade-y {
+            mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+
+        /* Smooth skill transition */
+        .skill-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-item.hidden-skill {
+            display: none !important;
+        }
+
+        /* Hero Vignette Radial Gradient (Efek gelap bundar di tepi, transparan di tengah) */
+        .hero-vignette {
+            background: radial-gradient(circle at 50% 38%, rgba(11, 15, 23, 0.15) 0%, rgba(11, 15, 23, 0.72) 55%, #0B0F17 95%);
+        }
+
+        /* Hero Vertical Fade (Pudar halus di bagian atas dan bawah) */
+        .hero-fade-y {
+            background: linear-gradient(to bottom, #0B0F17 0%, transparent 18%, transparent 78%, #0B0F17 100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-obsidian text-slate-300 font-sans antialiased selection:bg-slate-700/60 selection:text-white relative min-h-screen">
+
+    <!-- Ambient Subtle Graphite & Charcoal Aura -->
+    <div
+        class="fixed top-0 left-1/3 w-[550px] h-[550px] bg-slate-600/10 rounded-full blur-[150px] pointer-events-none -z-10">
+    </div>
+    <div
+        class="fixed bottom-1/4 right-1/4 w-[650px] h-[650px] bg-zinc-700/10 rounded-full blur-[170px] pointer-events-none -z-10">
+    </div>
+
+    <!-- Toast Notification (for copy email) -->
+    <div id="toast"
+        class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900/95 text-white px-5 py-3.5 rounded-xl border border-slate-600/60 shadow-2xl shadow-black/80 backdrop-blur-md">
+        <svg class="w-5 h-5 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span id="toast-message" class="text-sm font-medium">Alamat email berhasil disalin!</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header
+        class="fixed top-0 left-0 w-full bg-obsidian/90 backdrop-blur-lg border-b border-slate-800/80 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#"
+                class="group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 rounded-lg py-1 px-2">
+                <!-- Brand Logo (Dapat diganti dengan mengubah atribut src di bawah ini) -->
+                <div
+                    class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700/80 flex items-center justify-center p-1 shadow-md shadow-black/50 group-hover:border-slate-500 transition-all overflow-hidden">
+                    <img id="nav-brand-logo" src="images/logo/logo.png" alt="Logo Yusronaritama"
+                        class="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform"
+                        onerror="handleNavLogoFallback(this)" />
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="text-white font-bold tracking-tight text-base group-hover:text-white transition-colors">Yusronaritama</span>
+                    <span class="text-[10px] tracking-wider uppercase text-slate-400 font-mono">Portfolio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center space-x-1" aria-label="Navigasi Utama">
+                <a href="#tentang"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Tentang</a>
+                <a href="#pengalaman"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Pengalaman</a>
+                <a href="#keahlian"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Keahlian</a>
+                <a href="#proyek"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Proyek</a>
+                <a href="#sertifikasi"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Sertifikasi</a>
+                <a href="#kontak"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">Kontak</a>
+            </nav>
+
+            <!-- Header Action Button -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="cv/CV YUSRONARITAMA.pdf" target="_blank" rel="noopener noreferrer"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/70 hover:border-slate-400/80 transition-all flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    <span>Lihat CV</span>
+                </a>
+                <a href="mailto:yusronaritama@gmail.com"
+                    class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/70 hover:border-slate-400/80 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    <span class="w-2 h-2 rounded-full bg-slate-300 animate-pulse"></span>
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" type="button"
+                class="md:hidden p-2 rounded-xl bg-slate-800/80 border border-slate-700/70 text-slate-300 hover:text-white focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none"
+                aria-label="Buka menu navigasi" aria-expanded="false">
+                <svg id="menu-icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden border-b border-slate-800 bg-obsidian/95 backdrop-blur-xl px-6 py-5 transition-all">
+            <nav class="flex flex-col space-y-2">
+                <a href="#tentang"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Tentang</a>
+                <a href="#pengalaman"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Pengalaman</a>
+                <a href="#keahlian"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Keahlian</a>
+                <a href="#proyek"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Proyek</a>
+                <a href="#sertifikasi"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Sertifikasi</a>
+                <a href="#kontak"
+                    class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-slate-800/70 hover:text-white transition">Kontak</a>
+                <div class="pt-3 grid grid-cols-2 gap-2">
+                    <a href="cv/CV YUSRONARITAMA.pdf" target="_blank" rel="noopener noreferrer"
+                        class="w-full py-3 px-3 rounded-xl text-center text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/70 transition flex items-center justify-center gap-1.5">
+                        <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        Lihat CV
+                    </a>
+                    <a href="mailto:yusronaritama@gmail.com"
+                        class="w-full py-3 px-3 rounded-xl text-center text-xs font-semibold text-slate-950 bg-gradient-to-r from-slate-200 via-zinc-200 to-slate-300 hover:from-white hover:to-slate-200 transition flex items-center justify-center shadow-lg shadow-black/40">
+                        Kirim Email
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Custom Background Image & Vignette -->
+    <section class="relative pt-36 md:pt-44 pb-20 px-6 overflow-hidden">
+        <!-- Background Layer Container -->
+        <div class="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+            <!-- Custom Background Image (Cukup ganti src berkas di bawah ini jika ingin mengganti gambar) -->
+            <img id="hero-bg-img" src="images/herobg/Background.jpg" alt="Hero Background"
+                class="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity filter contrast-125 transition-opacity duration-500"
+                onerror="handleHeroBgFallback(this)" />
+
+            <!-- Vignette Efek Gelap Bundar (Radial Gradient) -->
+            <div class="absolute inset-0 hero-vignette"></div>
+
+            <!-- Vertical Linear Fade (Menyatu halus dengan navbar dan section bawah) -->
+            <div class="absolute inset-0 hero-fade-y"></div>
+
+            <!-- Subtle Grid Pattern Overlay -->
+            <div class="absolute inset-0 bg-pattern-subtle opacity-50"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+
+            <!-- Profile Photo (Circular Frame with Silver Glow) -->
+            <div class="flex justify-center pt-2">
+                <div class="relative group cursor-pointer">
+                    <!-- Ambient Glow Layer -->
+                    <div
+                        class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-slate-500/30 via-zinc-400/20 to-slate-600/30 opacity-70 blur-lg group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <!-- Circular Border Frame -->
+                    <div
+                        class="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full p-1.5 bg-gradient-to-b from-slate-300 via-zinc-400 to-slate-600 shadow-2xl shadow-black/80 ring-4 ring-slate-900/90 overflow-hidden">
+                        <img id="user-profile-img" src="images/photoprofile/Picture2.jpeg"
+                            alt="Foto Profil Yusronaritama"
+                            class="w-full h-full object-cover rounded-full bg-slate-900 group-hover:scale-105 transition-transform duration-300 ease-out"
+                            style="object-position: center 8%;" onerror="handleProfileImageFallback(this)" />
+                    </div>
+
+                    <!-- Online Status Badge -->
+                    <div class="absolute bottom-1 right-2 sm:bottom-2 sm:right-3 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-950 p-0.5 flex items-center justify-center shadow-lg"
+                        title="Status: Aktif">
+                        <span
+                            class="w-full h-full rounded-full bg-emerald-400 border border-slate-950 animate-pulse"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Availability Pill -->
+            <div
+                class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-300 text-xs font-medium shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-slate-300 animate-ping"></span>
+                <span>Terbuka untuk Kolaborasi & Proyek Web</span>
+            </div>
+
+            <!-- Main Heading -->
+            <div class="space-y-4">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1]">
+                    Halo, saya <br class="hidden sm:inline" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                        Yusronaritama
+                    </span>
+                </h1>
+                <p class="text-base sm:text-lg text-slate-300 font-mono font-medium tracking-wide">
+                    Web & Software Developer | Mahasiswa Teknik Informatika
+                </p>
+            </div>
+
+            <!-- Description -->
+            <p class="text-base md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
+                Fokus mengembangkan sistem web dinamis, aplikasi spasial interaktif berbasis peta, serta pemeliharaan
+                dan optimasi backend server produksi.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="pt-3 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#proyek"
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-slate-950 bg-gradient-to-r from-slate-200 via-zinc-200 to-slate-300 hover:from-white hover:to-slate-200 transition-all shadow-lg shadow-white/5 hover:shadow-white/10 hover:-translate-y-0.5 duration-200 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none text-center">
+                    Jelajahi Proyek Saya
+                </a>
+                <a href="cv/CV YUSRONARITAMA.pdf" target="_blank" rel="noopener noreferrer"
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-slate-300 hover:text-white border border-slate-600/70 hover:border-slate-400/80 bg-slate-800/80 hover:bg-slate-700/80 transition-all hover:-translate-y-0.5 duration-200 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none shadow-md shadow-black/40 text-center">
+                    <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    <span>Lihat CV</span>
+                </a>
+                <a href="#kontak"
+                    class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-slate-200 hover:text-white border border-slate-700 hover:border-slate-500/60 bg-slate-900/60 hover:bg-slate-800/80 transition-all hover:-translate-y-0.5 duration-200 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none text-center">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Quick Snapshot Cards -->
+            <div class="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
+                <div
+                    class="p-4 rounded-2xl bg-cardbg/80 border border-slate-800 hover:border-slate-600 transition backdrop-blur-sm">
+                    <span
+                        class="text-xs uppercase font-mono tracking-wider text-slate-300 font-semibold block mb-1">Spesialisasi</span>
+                    <p class="text-sm font-semibold text-white">Full-Stack & Sistem Web</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Frontend responsif dan backend modular</p>
+                </div>
+                <div
+                    class="p-4 rounded-2xl bg-cardbg/80 border border-slate-800 hover:border-slate-600 transition backdrop-blur-sm">
+                    <span
+                        class="text-xs uppercase font-mono tracking-wider text-slate-300 font-semibold block mb-1">Geospasial</span>
+                    <p class="text-sm font-semibold text-white">Pemetaan Interaktif</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Integrasi Leaflet.js & data koordinat</p>
+                </div>
+                <div
+                    class="p-4 rounded-2xl bg-cardbg/80 border border-slate-800 hover:border-slate-600 transition backdrop-blur-sm">
+                    <span
+                        class="text-xs uppercase font-mono tracking-wider text-slate-300 font-semibold block mb-1">Pengalaman
+                        Nyata</span>
+                    <p class="text-sm font-semibold text-white">Live System Maintenance</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Bug fixing & integrasi form server PMB</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tentang Section -->
+    <section id="tentang" class="relative py-24 px-6 border-t border-slate-800/80 bg-[#0B0F17] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Tech Blueprint Grid with vertical edge fade -->
+            <div class="absolute inset-0 bg-grid-blueprint mask-fade-y opacity-100"></div>
+            <!-- Top Studio Spotlight -->
+            <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-[radial-gradient(ellipse_at_top,_rgba(148,163,184,0.32)_0%,_rgba(71,85,105,0.22)_40%,_transparent_75%)]"></div>
+            <!-- Ambient Graphite Halos -->
+            <div class="absolute top-1/3 -left-28 w-[450px] h-[450px] bg-slate-500/25 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-10 -right-28 w-[450px] h-[450px] bg-zinc-400/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-16 space-y-3">
+                <h2 class="text-xs uppercase tracking-[0.25em] text-slate-300 font-semibold font-mono">Profil Ringkas
+                </h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Tentang Saya</h3>
+                <div class="w-12 h-1 bg-gradient-to-r from-slate-400 to-zinc-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+                <!-- Left Column: Biography Narrative -->
+                <div class="md:col-span-7 space-y-5 text-slate-300 leading-relaxed text-base">
+                    <p>
+                        Saya adalah mahasiswa semester 6 Teknik Informatika di Universitas Buana Perjuangan Karawang
+                        yang memiliki antusiasme tinggi dalam pengembangan web, perangkat lunak, dan eksplorasi di
+                        bidang Data Science serta Machine Learning.
+                    </p>
+                    <p>
+                        Saya terbiasa menangani proyek dan arsitektur sistem berbasis kebutuhan nyata. Pengalaman saya
+                        membentang dari pemeliharaan sistem Penerimaan Mahasiswa Baru (PMB) UBP Karawang, merancang
+                        arsitektur web modern seperti <strong>WAREREX</strong> (menggunakan ekosistem Laravel dengan
+                        integrasi modular Vue.js) dan sistem <strong>Manajemen Barang</strong> murni berbasis Laravel,
+                        hingga pengembangan aplikasi mobile (GoRentall) dan portal GIS spasial desa.
+                    </p>
+                    <p class="text-slate-400 text-sm">
+                        Di luar penulisan kode dan perancangan antarmuka visual dengan Figma, saya menaruh minat
+                        mendalam pada sejarah militer, sejarah dunia, dan geopolitik, sebuah hobi yang kerap memberikan
+                        perspektif analitis yang tajam saat saya memecahkan masalah logika dalam pemrograman.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60">Laravel
+                            & Vue.js</span>
+                        <span
+                            class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60">Full-Stack
+                            Web Dev</span>
+                        <span
+                            class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60">Ionic
+                            Mobile</span>
+                        <span
+                            class="px-3 py-1 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700/60">Machine
+                            Learning</span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Key Details Card -->
+                <div class="md:col-span-5">
+                    <div
+                        class="bg-cardbg/90 border border-slate-700/70 rounded-2xl p-6 sm:p-7 shadow-xl shadow-black/30 space-y-5">
+                        <h4 class="text-white font-bold text-lg border-b border-slate-800 pb-3 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                            Informasi Kontak & Status
+                        </h4>
+
+                        <div class="space-y-3.5 text-sm">
+                            <!-- Kolom Pendidikan dengan Logo Kampus & Keterangan Tepat di Bawah Logo -->
+                            <div class="py-2.5 border-b border-slate-800/60">
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <span class="text-slate-400 font-mono text-xs">Pendidikan:</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Perguruan
+                                        Tinggi</span>
+                                </div>
+                                <div
+                                    class="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-3 group/campus">
+                                    <!-- Logo Kampus (Diperbesar) -->
+                                    <div
+                                        class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-slate-950/90 p-3 border border-slate-700/80 flex items-center justify-center shadow-lg shadow-black/40 group-hover/campus:border-slate-500/80 transition-all duration-300">
+                                        <img id="campus-logo-img" src="images/logokampus/Logo-UBP-Karawang-1.png"
+                                            alt="Logo Universitas Buana Perjuangan Karawang"
+                                            class="w-full h-full object-contain filter drop-shadow group-hover/campus:scale-105 transition-transform duration-300"
+                                            onerror="handleCampusLogoFallback(this)" />
+                                    </div>
+                                    <!-- Teks Tepat di Bawah Logo -->
+                                    <div class="space-y-1">
+                                        <h5
+                                            class="text-white font-bold text-base sm:text-lg tracking-tight leading-snug">
+                                            Universitas Buana Perjuangan Karawang
+                                        </h5>
+                                        <p class="text-xs sm:text-sm text-slate-300 font-medium">
+                                            S1 Teknik Informatika
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-slate-800/60">
+                                <span class="text-slate-400 font-mono text-xs">Lokasi:</span>
+                                <span class="text-white font-medium">Karawang, Jawa Barat</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-slate-800/60">
+                                <span class="text-slate-400 font-mono text-xs">Fokus Tech:</span>
+                                <span class="text-white font-medium">Web, Mobile & Data</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-slate-800/60">
+                                <span class="text-slate-400 font-mono text-xs">Email Utama:</span>
+                                <span class="text-slate-300 font-mono text-xs select-all">yusronaritama@gmail.com</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-slate-800/60">
+                                <span class="text-slate-400 font-mono text-xs">No Whatsapp:</span>
+                                <span class="text-slate-200 font-mono text-xs select-all">+62 857-9595-0577</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1">
+                                <span class="text-slate-400 font-mono text-xs">Status Kolaborasi:</span>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    Terbuka
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <a href="cv/CV YUSRONARITAMA.pdf" target="_blank" rel="noopener noreferrer"
+                                class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/70 hover:border-slate-400/80 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                                <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                                <span>Lihat CV</span>
+                            </a>
+                            <button type="button" onclick="copyEmailToClipboard()"
+                                class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700/90 border border-slate-600/70 hover:border-slate-500/60 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                                <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                                    </path>
+                                </svg>
+                                <span>Salin Email</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengalaman (Experience) Section: Vertical Timeline -->
+    <section id="pengalaman" class="relative py-24 px-6 border-t border-slate-800/80 bg-[#090D14] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Cross Grid Tech Matrix -->
+            <div class="absolute inset-0 bg-grid-cross mask-fade-y opacity-100"></div>
+            <!-- Central Vertical Illumination Column behind timeline -->
+            <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[750px] bg-[radial-gradient(ellipse_60%_80%_at_50%_45%,_rgba(148,163,184,0.28)_0%,_rgba(71,85,105,0.18)_50%,_transparent_80%)]"></div>
+            <!-- Ambient Soft Halos -->
+            <div class="absolute top-1/4 -right-24 w-[450px] h-[450px] bg-slate-500/25 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-1/4 -left-24 w-[450px] h-[450px] bg-zinc-400/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+
+            <!-- Section Header -->
+            <div class="text-center mb-16 space-y-3">
+                <h2 class="text-xs uppercase tracking-[0.25em] text-slate-300 font-semibold font-mono">Rekam Jejak &
+                    Perjalanan</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Pengalaman Saya</h3>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto">
+                    Kombinasi pengalaman teknis pemeliharaan server produksi, pengembangan web & sistem spasial, hingga
+                    aktivitas akademik.
+                </p>
+                <div class="w-12 h-1 bg-gradient-to-r from-slate-400 to-zinc-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Vertical Timeline Container -->
+            <div class="relative">
+                <!-- Center Vertical Line (Mobile: left-6, Desktop: center) -->
+                <div
+                    class="absolute left-6 md:left-1/2 top-4 bottom-4 -translate-x-1/2 w-0.5 bg-gradient-to-b from-slate-400 via-zinc-500/50 to-slate-800/60 pointer-events-none">
+                </div>
+
+                <div class="space-y-10 md:space-y-14">
+
+                    <!-- TIMELINE ITEM 1: PMB UBP Karawang (Right on desktop) -->
+                    <div class="relative flex flex-col md:flex-row items-start group">
+                        <!-- Timeline Node Icon -->
+                        <div
+                            class="absolute left-6 md:left-1/2 top-6 -translate-x-1/2 z-20 w-10 h-10 rounded-full bg-slate-950 border-2 border-slate-400 flex items-center justify-center text-slate-300 shadow-lg shadow-black/60 group-hover:scale-110 group-hover:bg-slate-200 group-hover:text-slate-950 group-hover:border-slate-200 transition-all duration-300">
+                            <!-- Server / Database Maintenance Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <!-- Card Content (Placed on right side on desktop) -->
+                        <div class="ml-14 md:ml-auto md:w-[calc(50%-2.5rem)]">
+                            <div
+                                class="bg-[#172030] rounded-2xl p-6 sm:p-7 border border-slate-700/60 hover:border-slate-500/60 hover:shadow-2xl hover:shadow-black/70 transition-all duration-300 space-y-4">
+
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-300 bg-slate-900 border border-slate-700/80 shadow-sm">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
+                                        2025 - Sekarang (Aktif)
+                                    </span>
+                                    <span
+                                        class="text-[11px] font-mono text-slate-400 bg-slate-900/80 px-2.5 py-0.5 rounded border border-slate-800">
+                                        Server Production
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-white font-bold text-lg md:text-xl tracking-tight group-hover:text-white transition-colors">
+                                        Core Developer & Maintenance Server PMB
+                                    </h4>
+                                    <p class="text-slate-300 text-sm font-semibold flex items-center gap-1.5 mt-1">
+                                        <span>🏛️</span> Universitas Buana Perjuangan Karawang
+                                    </p>
+                                </div>
+
+                                <ul
+                                    class="space-y-2 text-slate-300 text-xs sm:text-sm leading-relaxed list-disc list-inside">
+                                    <li>Bertanggung jawab menjaga keandalan backend sistem Penerimaan Mahasiswa Baru
+                                        (PMB) online untuk ribuan pendaftar aktif.</li>
+                                    <li>Melakukan refactoring query basis data MySQL serta indexing tabel, sukses
+                                        memangkas latency response time formulir hingga 42%.</li>
+                                    <li>Investigasi bug form registrasi dan penanganan cepat (*live hotfix*) pada
+                                        endpoint API form pendaftaran langsung di server live.</li>
+                                </ul>
+
+                                <div class="pt-2 flex flex-wrap gap-1.5">
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">PHP
+                                        Native</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">MySQL
+                                        Optimization</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Server
+                                        Maintenance</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">API
+                                        Security</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIMELINE ITEM 2: Tim IT KKN Desa Wanajaya (Left on desktop) -->
+                    <div class="relative flex flex-col md:flex-row items-start group">
+                        <!-- Timeline Node Icon -->
+                        <div
+                            class="absolute left-6 md:left-1/2 top-6 -translate-x-1/2 z-20 w-10 h-10 rounded-full bg-slate-950 border-2 border-slate-400 flex items-center justify-center text-slate-300 shadow-lg shadow-black/60 group-hover:scale-110 group-hover:bg-slate-200 group-hover:text-slate-950 group-hover:border-slate-200 transition-all duration-300">
+                            <!-- Map Pin / GIS Spasial Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <!-- Card Content (Placed on left side on desktop) -->
+                        <div class="ml-14 md:ml-0 md:mr-auto md:w-[calc(50%-2.5rem)]">
+                            <div
+                                class="bg-[#172030] rounded-2xl p-6 sm:p-7 border border-slate-700/60 hover:border-slate-500/60 hover:shadow-2xl hover:shadow-black/70 transition-all duration-300 space-y-4">
+
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-300 bg-slate-900 border border-slate-700">
+                                        2026
+                                    </span>
+                                    <span
+                                        class="text-[11px] font-mono text-emerald-300 bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800/60">
+                                        Pengabdian Masyarakat
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-white font-bold text-lg md:text-xl tracking-tight group-hover:text-white transition-colors">
+                                        Koordinator IT & Web GIS Developer
+                                    </h4>
+                                    <p class="text-slate-300 text-sm font-semibold flex items-center gap-1.5 mt-1">
+                                        <span>🌾</span> KKN Desa Wanajaya (LPPM UBP Karawang)
+                                    </p>
+                                </div>
+
+                                <ul
+                                    class="space-y-2 text-slate-300 text-xs sm:text-sm leading-relaxed list-disc list-inside">
+                                    <li>Merancang dan membangun portal web profil desa interaktif sebagai pusat
+                                        keterbukaan informasi dan profil aparatur desa.</li>
+                                    <li>Mengembangkan sistem informasi geospasial (GIS) berbasis Leaflet.js yang
+                                        memetakan batas 4 dusun, fasilitas umum, dan 14 titik potensi UMKM warga.</li>
+                                    <li>Menginisiasi digitalisasi data potensi desa serta memberikan pendampingan teknis
+                                        pemanfaatan portal digital bagi perangkat desa.</li>
+                                </ul>
+
+                                <div class="pt-2 flex flex-wrap gap-1.5">
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Vue.js</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Leaflet.js
+                                        GIS</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">GeoJSON</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Tailwind
+                                        CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIMELINE ITEM 3: Independent Web & Mobile Developer (Right on desktop) -->
+                    <div class="relative flex flex-col md:flex-row items-start group">
+                        <!-- Timeline Node Icon -->
+                        <div
+                            class="absolute left-6 md:left-1/2 top-6 -translate-x-1/2 z-20 w-10 h-10 rounded-full bg-slate-950 border-2 border-slate-400 flex items-center justify-center text-slate-300 shadow-lg shadow-black/60 group-hover:scale-110 group-hover:bg-slate-200 group-hover:text-slate-950 group-hover:border-slate-200 transition-all duration-300">
+                            <!-- Laptop Code Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+
+                        <!-- Card Content (Placed on right side on desktop) -->
+                        <div class="ml-14 md:ml-auto md:w-[calc(50%-2.5rem)]">
+                            <div
+                                class="bg-[#172030] rounded-2xl p-6 sm:p-7 border border-slate-700/60 hover:border-slate-500/60 hover:shadow-2xl hover:shadow-black/70 transition-all duration-300 space-y-4">
+
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-300 bg-slate-900 border border-slate-700/80 shadow-sm">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 animate-pulse"></span>
+                                        2023 - Sekarang
+                                    </span>
+                                    <span
+                                        class="text-[11px] font-mono text-slate-400 bg-slate-900/80 px-2.5 py-0.5 rounded border border-slate-800">
+                                        Software Engineering
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-white font-bold text-lg md:text-xl tracking-tight group-hover:text-white transition-colors">
+                                        Independent Web & Software Developer
+                                    </h4>
+                                    <p class="text-slate-300 text-sm font-semibold flex items-center gap-1.5 mt-1">
+                                        <span>💻</span> Proyek Personal & Klien
+                                    </p>
+                                </div>
+
+                                <ul
+                                    class="space-y-2 text-slate-300 text-xs sm:text-sm leading-relaxed list-disc list-inside">
+                                    <li>Membangun aplikasi mobile rental kendaraan <strong
+                                            class="text-white font-semibold">GoRentall</strong> berbasis Ionic
+                                        Framework, Angular, dan Capacitor dengan antarmuka dinamis.</li>
+                                    <li>Merancang sistem manajemen gudang <strong
+                                            class="text-white font-semibold">WAREREX</strong> dengan pelacakan kapasitas
+                                        rak, audit trail mutasi stok, dan barcode SKU scanner.</li>
+                                    <li>Mengembangkan aplikasi web reservasi hotel <strong
+                                            class="text-white font-semibold">Aksaya Resort</strong> dan sistem <strong
+                                            class="text-white font-semibold">Manajemen Barang</strong> dengan arsitektur
+                                        CRUD terstruktur.</li>
+                                </ul>
+
+                                <div class="pt-2 flex flex-wrap gap-1.5">
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Ionic
+                                        & Angular</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Laravel
+                                        / PHP</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">MySQL
+                                        Database</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">RESTful
+                                        API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIMELINE ITEM 4: Pendidikan Formal S1 Teknik Informatika (Left on desktop) -->
+                    <div class="relative flex flex-col md:flex-row items-start group">
+                        <!-- Timeline Node Icon -->
+                        <div
+                            class="absolute left-6 md:left-1/2 top-6 -translate-x-1/2 z-20 w-10 h-10 rounded-full bg-slate-950 border-2 border-slate-400 flex items-center justify-center text-slate-300 shadow-lg shadow-black/60 group-hover:scale-110 group-hover:bg-slate-200 group-hover:text-slate-950 group-hover:border-slate-200 transition-all duration-300">
+                            <!-- Academic Cap Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                <path
+                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <!-- Card Content (Placed on left side on desktop) -->
+                        <div class="ml-14 md:ml-0 md:mr-auto md:w-[calc(50%-2.5rem)]">
+                            <div
+                                class="bg-[#172030] rounded-2xl p-6 sm:p-7 border border-slate-700/60 hover:border-slate-500/60 hover:shadow-2xl hover:shadow-black/70 transition-all duration-300 space-y-4">
+
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium text-slate-300 bg-slate-900 border border-slate-700">
+                                        2023 - Sekarang (Semester 7)
+                                    </span>
+                                    <span
+                                        class="text-[11px] font-mono text-slate-300 bg-slate-900/80 px-2.5 py-0.5 rounded border border-slate-700/80">
+                                        Pendidikan Formal
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-white font-bold text-lg md:text-xl tracking-tight group-hover:text-white transition-colors">
+                                        S1 Teknik Informatika
+                                    </h4>
+                                    <p class="text-slate-300 text-sm font-semibold flex items-center gap-1.5 mt-1">
+                                        <span>🎓</span> Universitas Buana Perjuangan Karawang
+                                    </p>
+                                </div>
+
+                                <ul
+                                    class="space-y-2 text-slate-300 text-xs sm:text-sm leading-relaxed list-disc list-inside">
+                                    <li>Mendalami kajian Rekayasa Perangkat Lunak, Struktur Data & Algoritma, Basis Data
+                                        Relasional, serta Pemrograman Berorientasi Objek.</li>
+                                    <li>Aktif mengeksplorasi integrasi sistem web modern dan memiliki ketertarikan
+                                        analitis kuat dalam bidang Data Science serta Machine Learning.</li>
+                                    <li>Dipercaya berkontribusi dalam tim teknis pemeliharaan sistem informasi kampus
+                                        berdasarkan kompetensi dan dedikasi teknis yang teruji.</li>
+                                </ul>
+
+                                <div class="pt-2 flex flex-wrap gap-1.5">
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Algoritma
+                                        & Struktur Data</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Rekayasa
+                                        Web</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Basis
+                                        Data Relasional</span>
+                                    <span
+                                        class="text-[10px] font-mono text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700">Data
+                                        Science</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Keahlian Section -->
+    <section id="keahlian" class="relative py-24 px-6 border-t border-slate-800/80 bg-[#0B0F17] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Dot Matrix Grid -->
+            <div class="absolute inset-0 bg-dot-matrix mask-fade-y opacity-100"></div>
+            <!-- Wide Spotlight behind skill tabs & badges -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-[radial-gradient(ellipse_at_top,_rgba(148,163,184,0.30)_0%,_rgba(71,85,105,0.20)_45%,_transparent_75%)]"></div>
+            <!-- Ambient glow behind AI Tools sub-section -->
+            <div class="absolute bottom-16 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-[radial-gradient(ellipse_at_center,_rgba(148,163,184,0.26)_0%,_rgba(71,85,105,0.18)_50%,_transparent_75%)]"></div>
+            <!-- Soft Side Auras -->
+            <div class="absolute top-1/2 -left-28 w-[450px] h-[450px] bg-slate-500/25 rounded-full blur-[110px]"></div>
+            <div class="absolute top-1/2 -right-28 w-[450px] h-[450px] bg-zinc-400/20 rounded-full blur-[110px]"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-10 space-y-3">
+                <h2 class="text-xs uppercase tracking-[0.25em] text-slate-300 font-semibold font-mono">Teknologi &
+                    Kompetensi</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Keahlian Saya</h3>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto">
+                    Kombinasi bahasa pemrograman, framework modern, serta perangkat penunjang yang saya gunakan dalam
+                    pengembangan proyek.
+                </p>
+                <div class="w-12 h-1 bg-gradient-to-r from-slate-400 to-zinc-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Skill Category Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+                <button type="button" onclick="filterSkills('all', this)"
+                    class="skill-tab active-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-950 shadow-md shadow-white/5 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    Semua (16)
+                </button>
+                <button type="button" onclick="filterSkills('frontend', this)"
+                    class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    Frontend
+                </button>
+                <button type="button" onclick="filterSkills('backend', this)"
+                    class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    Backend & Database
+                </button>
+                <button type="button" onclick="filterSkills('tools', this)"
+                    class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60 transition-all focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                    Mobile & Tools
+                </button>
+            </div>
+
+            <!-- Skills Grid: Dihasilkan secara modular dari skills.js -->
+            <div id="skills-container" class="flex flex-wrap justify-center gap-4 md:gap-5 max-w-5xl mx-auto"></div>
+
+            <!-- Sub-seksi AI Tools: Dihasilkan secara modular dari skills.js -->
+            <div class="mt-20 pt-12 border-t border-slate-800/80 max-w-6xl mx-auto">
+                <div class="text-center mb-10 space-y-3">
+                    <div
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-slate-300 text-xs font-mono font-medium shadow-inner shadow-black/40">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        AI Synergy & Accelerated Workflow
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">AI-Assisted Development Lab</h4>
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+                        Ekosistem kecerdasan buatan mutakhir yang diintegrasikan secara strategis dalam alur kerja rekayasa perangkat lunak untuk akselerasi riset arsitektur, optimasi algoritma, audit kualitas kode, dan pengembangan otonom.
+                    </p>
+                </div>
+
+                <div id="ai-tools-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek Section -->
+    <section id="proyek" class="relative py-24 px-6 border-t border-slate-800/80 bg-[#0A0E16] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Tech Blueprint Grid -->
+            <div class="absolute inset-0 bg-grid-blueprint mask-fade-y opacity-100"></div>
+            <!-- Dramatic Stage Showcase Spotlight radiating over project cards -->
+            <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_top,_rgba(148,163,184,0.35)_0%,_rgba(71,85,105,0.22)_45%,_transparent_75%)]"></div>
+            <!-- Soft Bottom Reflection Halo -->
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[350px] bg-[radial-gradient(ellipse_at_bottom,_rgba(71,85,105,0.35)_0%,_transparent_80%)]"></div>
+            <!-- Side accent blurs -->
+            <div class="absolute top-1/3 -left-28 w-[450px] h-[450px] bg-slate-500/25 rounded-full blur-[100px]"></div>
+            <div class="absolute top-2/3 -right-28 w-[450px] h-[450px] bg-zinc-400/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+
+            <!-- Section Header: Center Bold "Proyek Saya" as requested -->
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Proyek Saya</h3>
+            </div>
+
+            <!-- 3-Column Responsive Cards Grid: Dihasilkan secara dinamis dari projects.js -->
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Sertifikasi Section: Dihasilkan secara dinamis dari certificates.js -->
+    <section id="sertifikasi" class="relative py-24 px-6 border-t border-slate-800/80 bg-[#0B0F17] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Micro Cross Tech Pattern -->
+            <div class="absolute inset-0 bg-grid-cross mask-fade-y opacity-100"></div>
+            <!-- Metallic Silver Ambient Halo radiating behind certificate cards -->
+            <div class="absolute top-16 left-1/2 -translate-x-1/2 w-[1050px] h-[550px] bg-[radial-gradient(ellipse_at_center,_rgba(148,163,184,0.30)_0%,_rgba(71,85,105,0.18)_50%,_transparent_70%)]"></div>
+            <!-- Soft Side Depth Spheres -->
+            <div class="absolute top-1/4 -left-28 w-[450px] h-[450px] bg-slate-500/25 rounded-full blur-[90px]"></div>
+            <div class="absolute bottom-1/4 -right-28 w-[450px] h-[450px] bg-zinc-400/20 rounded-full blur-[90px]"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto space-y-12 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center space-y-3">
+                <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                    Sertifikasi
+                </h3>
+                <div class="w-12 h-1 bg-gradient-to-r from-slate-400 to-zinc-500 mx-auto rounded-full"></div>
+                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed pt-1">
+                    Dokumentasi sertifikat pelatihan dan kompetensi yang telah saya peroleh.
+                </p>
+            </div>
+
+            <!-- Certificates Responsive Cards Grid: Dihasilkan secara dinamis dari certificates.js -->
+            <div id="certificates-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="relative py-28 px-6 border-t border-slate-800/80 bg-[#090D14] overflow-hidden">
+        <!-- Layered Background Aesthetics -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <!-- Blueprint & Subtle Dot Grid Blend -->
+            <div class="absolute inset-0 bg-grid-blueprint mask-fade-y opacity-100"></div>
+            <div class="absolute inset-0 bg-pattern-subtle mask-radial-fade opacity-100"></div>
+            <!-- Focal Silver-Graphite Glow directly centered behind the contact card -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[600px] bg-[radial-gradient(ellipse_at_center,_rgba(148,163,184,0.32)_0%,_rgba(71,85,105,0.20)_50%,_transparent_70%)]"></div>
+            <!-- Top Spotlight -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[radial-gradient(ellipse_at_top,_rgba(100,116,139,0.30)_0%,_transparent_70%)]"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center space-y-8 relative z-10">
+            <div class="space-y-3">
+                <h2 class="text-xs uppercase tracking-[0.25em] text-slate-300 font-semibold font-mono">Mulai Kolaborasi
+                </h2>
+                <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">Hubungi Saya</h3>
+                <div class="w-12 h-1 bg-gradient-to-r from-slate-400 to-zinc-500 mx-auto rounded-full"></div>
+            </div>
+
+            <p class="text-slate-300 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                Tertarik untuk berdiskusi seputar peluang proyek web, kolaborasi sistem geospasial, atau tawaran magang?
+                Saya siap menyambut pesan Anda.
+            </p>
+
+            <!-- Contact Card Container -->
+            <div
+                class="bg-cardbg/90 border border-slate-700/80 rounded-2xl p-7 md:p-9 shadow-2xl shadow-black/40 text-left space-y-6">
+
+                <div
+                    class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-slate-900/80 flex items-center justify-center text-slate-300 flex-shrink-0 border border-slate-700/80">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-xs text-slate-400 font-mono block">Email Resmi:</span>
+                            <span
+                                class="text-sm md:text-base font-semibold text-white font-mono break-all">yusronaritama@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="copyEmailToClipboard()"
+                        class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/70 hover:border-slate-400/80 transition-all flex items-center justify-center gap-2 flex-shrink-0 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                            </path>
+                        </svg>
+                        <span>Salin Email</span>
+                    </button>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                    <a href="mailto:yusronaritama@gmail.com"
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-xl text-center font-bold text-slate-950 bg-gradient-to-r from-slate-200 via-zinc-200 to-slate-300 hover:from-white hover:to-slate-200 transition-all shadow-lg shadow-white/5 hover:shadow-white/10 hover:-translate-y-0.5 duration-200 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:outline-none">
+                        Buka Aplikasi Email
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="relative z-10 border-t border-slate-800/90 bg-[#080B11] py-12 px-6 text-center text-xs text-slate-400 font-sans overflow-hidden">
+        <!-- Background Tech Texture & Soft Top Glow -->
+        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <div class="absolute inset-0 bg-dot-matrix mask-fade-y opacity-80"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[200px] bg-[radial-gradient(ellipse_at_top,_rgba(100,116,139,0.30)_0%,_transparent_75%)]"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto space-y-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Brand & Logo -->
+                <div class="flex items-center gap-2.5">
+                    <div
+                        class="w-7 h-7 rounded-lg bg-slate-900 border border-slate-700/80 flex items-center justify-center p-1 overflow-hidden shadow-inner">
+                        <img src="images/logo/logo.png" alt="Logo Yusronaritama"
+                            class="w-full h-full object-contain rounded-sm" onerror="handleNavLogoFallback(this)" />
+                    </div>
+                    <span class="text-slate-200 font-semibold text-sm">Yusronaritama</span>
+                </div>
+
+                <!-- Social Media Icons (Ukuran Besar & Kontras Tinggi) -->
+                <div class="flex items-center justify-center gap-3.5 sm:gap-4 flex-wrap" aria-label="Media Sosial">
+                    <a href="https://www.instagram.com/yusronaritama09?srtk=ZDlqM2lqaWZkMnRj" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-pink-500 hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-600 hover:to-purple-600 text-pink-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/60 hover:shadow-pink-500/30 group"
+                        title="Instagram" aria-label="Instagram">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <!-- TikTok (Ganti href dengan tautan TikTok Anda) -->
+                    <a href="https://www.tiktok.com/@sterben1237?_r=1&_t=ZS-9AlNfeayOhU" target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-white hover:bg-black text-white hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/60 hover:shadow-cyan-400/30 group"
+                        title="TikTok" aria-label="TikTok">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.71 1.35-.06 2.56-.84 3.07-2.08.31-.75.39-1.57.38-2.38V.02z" />
+                        </svg>
+                    </a>
+
+                    <!-- WhatsApp (Ganti nomor/tautan WhatsApp jika diperlukan) -->
+                    <a href="https://wa.me/qr/DVIAW6INN5ZTH1?s=v" target="_blank" rel="noopener noreferrer"
+                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-emerald-400 hover:bg-emerald-600 text-emerald-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/60 hover:shadow-emerald-500/30 group"
+                        title="WhatsApp" aria-label="WhatsApp">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn (Ganti href dengan tautan LinkedIn Anda) -->
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-blue-400 hover:bg-blue-600 text-blue-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-black/60 hover:shadow-blue-500/30 group"
+                        title="LinkedIn" aria-label="LinkedIn">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex flex-wrap items-center justify-center gap-4 text-slate-400">
+                    <a href="#tentang" class="hover:text-white transition">Tentang</a>
+                    <a href="#pengalaman" class="hover:text-white transition">Pengalaman</a>
+                    <a href="#keahlian" class="hover:text-white transition">Keahlian</a>
+                    <a href="#proyek" class="hover:text-white transition">Proyek</a>
+                    <a href="#sertifikasi" class="hover:text-white transition">Sertifikasi</a>
+                    <a href="#kontak" class="hover:text-white transition">Kontak</a>
+                </div>
+            </div>
+
+            <!-- Divider & Copyright -->
+            <div class="pt-6 border-t border-slate-800/80 text-center text-slate-500 text-[11px]">
+                <p>&copy; 2026 Yusronaritama. Dirancang dengan HTML5, Tailwind CSS, dan Devicon.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconBars = document.getElementById('menu-icon-bars');
+        const iconClose = document.getElementById('menu-icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                iconBars.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.add('hidden');
+                iconBars.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // 2. Copy Email to Clipboard with Toast
+        function copyEmailToClipboard() {
+            const email = "yusronaritama@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                showToast("Alamat email berhasil disalin ke clipboard!");
+            }).catch(() => {
+                showToast("Gagal menyalin email otomatis.");
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // 3. Keyboard accessibility: Close mobile menu on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // 4. Graceful Fallback for Profile Photo
+        function handleProfileImageFallback(img) {
+            if (!img.dataset.triedPng) {
+                img.dataset.triedPng = "true";
+                img.src = "images/profile.png";
+            } else if (!img.dataset.triedWebp) {
+                img.dataset.triedWebp = "true";
+                img.src = "images/profile.webp";
+            } else if (!img.dataset.triedSvg) {
+                img.dataset.triedSvg = "true";
+                img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='100%25' height='100%25'><defs><linearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23172033'/><stop offset='100%25' stop-color='%230B0F17'/></linearGradient><linearGradient id='silver' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23CBD5E1'/><stop offset='100%25' stop-color='%2394A3B8'/></linearGradient></defs><rect width='200' height='200' fill='url(%23bg)'/><circle cx='100' cy='72' r='38' fill='url(%23silver)'/><path d='M35 185 c0 -35 29 -60 65 -60 s65 25 65 60 Z' fill='url(%23silver)' fill-opacity='0.85'/></svg>";
+            }
+        }
+
+        // 5. Graceful Fallback for Campus Logo
+        function handleCampusLogoFallback(img) {
+            if (!img.dataset.triedUbp) {
+                img.dataset.triedUbp = "true";
+                img.src = "images/logo_ubp.png";
+            } else if (!img.dataset.triedJpg) {
+                img.dataset.triedJpg = "true";
+                img.src = "images/logo_kampus.jpg";
+            } else if (!img.dataset.triedSvg) {
+                img.dataset.triedSvg = "true";
+                img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='100%25' height='100%25'><polygon points='32,10 60,24 32,38 4,24' fill='%23CBD5E1'/><polygon points='14,30 14,46 32,55 50,46 50,30 32,39' fill='%2364748B'/><line x1='56' y1='25' x2='56' y2='45' stroke='%23CBD5E1' stroke-width='2'/><circle cx='56' cy='46' r='3' fill='%23CBD5E1'/></svg>";
+            }
+        }
+
+        // 6. Graceful Fallback for Hero Background Image
+        function handleHeroBgFallback(img) {
+            img.style.display = "none";
+        }
+
+        // 7. Graceful Fallback for Navbar & Footer Brand Logo
+        function handleNavLogoFallback(img) {
+            if (!img.dataset.triedSvg) {
+                img.dataset.triedSvg = "true";
+                img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='100%25' height='100%25'><rect width='40' height='40' rx='10' fill='%230F172A'/><text x='50%25' y='55%25' font-family='sans-serif' font-weight='900' font-size='16' fill='%23E2E8F0' text-anchor='middle' dominant-baseline='middle'>YA</text></svg>";
+            }
+        }
+    </script>
+
+    <!-- Certificate Preview Modal -->
+    <div id="cert-modal"
+        class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md"
+        onclick="if(event.target === this) closeCertificateModal()">
+        <div
+            class="relative w-full max-w-4xl bg-cardbg border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/80">
+                <div class="space-y-0.5">
+                    <h4 id="cert-modal-title" class="text-white font-bold text-base sm:text-lg">Pratinjau Sertifikat
+                    </h4>
+                    <p id="cert-modal-date" class="text-xs text-slate-400 font-mono"></p>
+                </div>
+                <button type="button" onclick="closeCertificateModal()"
+                    class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                    aria-label="Tutup pratinjau">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Image Preview -->
+            <div class="p-4 sm:p-6 overflow-y-auto flex items-center justify-center bg-slate-950/60 min-h-[300px]">
+                <img id="cert-modal-img" src="" alt="Pratinjau Sertifikat"
+                    class="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl border border-slate-800" />
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-end px-6 py-3 border-t border-slate-800 bg-slate-900/80 text-xs">
+                <button type="button" onclick="closeCertificateModal()"
+                    class="px-5 py-2 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-slate-200 via-zinc-200 to-slate-300 hover:from-white hover:to-slate-200 transition shadow">
+                    Tutup Pratinjau
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Partisi Modular Keahlian & AI Tools -->
+    <script src="skills.js"></script>
+
+    <!-- Script Partisi Modular Proyek GitHub (Menarik data & merender live preview) -->
+    <script src="projects.js"></script>
+
+    <!-- Script Partisi Modular Sertifikasi & Kredensial -->
+    <script src="certificates.js"></script>
+</body>
+
+</html>
